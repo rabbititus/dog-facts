@@ -1,24 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import FactList from "./components/Facts/FactList";
+import Header from "./components/Header/Header";
+import useFetch from "./hooks/useFetch";
+
+import "./App.css";
+
+export const factURL =
+  "https://cat-fact.herokuapp.com/facts/random?animal_type=dog&amount=5";
 
 function App() {
+  const { data, loading, error } = useFetch(factURL);
+
+  if (loading) return <h1>Loading...</h1>;
+
+  if (error) console.error(error);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <main className="container">
+      <Header />
+      <FactList data={data} />
+    </main>
   );
 }
 
