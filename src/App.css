@@ -17,6 +17,13 @@ h1 {
   margin: 0;
 }
 
+.loading-container {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
 .facts-container {
   width: 100%;
   margin: 20px 0;
